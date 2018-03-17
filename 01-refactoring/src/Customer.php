@@ -32,7 +32,7 @@ class Customer
 
         foreach ($rentals as $rental) {
 
-            $thisAmount = $rental->obtainCharge($rental);
+            $thisAmount = $rental->obtainCharge();
             $totalAmount += $thisAmount;
 
             // add frequent renter points
