@@ -37,7 +37,7 @@ class Customer
 
             // add frequent renter points
             $frequentRenterPoints = $frequentRenterPoints +
-                $this->calculateFrequenRenterPoints($rental, $frequentRenterPoints);
+                $rental->calculateFrequenRenterPoints($frequentRenterPoints);
 
             //show figures for this rental
             $result .= "\t" . $rental->getMovie()->getTitle() . "\t" . $thisAmount . "\n";
@@ -47,24 +47,6 @@ class Customer
         $result .= 'You earned ' . $frequentRenterPoints . ' frequent renter points';
 
         return $result;
-    }
-
-
-    /**
-     * @param $rental
-     * @return bool
-     */
-    private function calculateFrequenRenterPoints(Rental $rental)
-    {
-        $frequentRenterPoints = 1;
-
-        // add bonus for a two day new release rental
-        if (($rental->getMovie()->getPriceCode() == Movie::NEW_RELEASE)
-            && $rental->getDaysRented() > 1) {
-
-            $frequentRenterPoints = $frequentRenterPoints + 1;
-        }
-        return $frequentRenterPoints;
     }
 }
 
