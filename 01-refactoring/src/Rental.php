@@ -58,18 +58,14 @@ class Rental
      */
     public function calculateFrequentRenterPoints()
     {
-        $frequentRenterPoints = 1;
-
-        // add bonus for a two day new release rental
-        $frequentRenterPoints = $frequentRenterPoints + $this->addBonusForNewRelease();
-        return $frequentRenterPoints;
+        return 1 + $this->addBonusPoints();
     }
 
 
     /**
      * @return int
      */
-    private function addBonusForNewRelease()
+    private function addBonusPoints()
     {
         $frequentRenterPoints = 0;
 
