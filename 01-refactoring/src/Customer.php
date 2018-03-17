@@ -31,14 +31,13 @@ class Customer
 
         foreach ($rentals as $rental) {
 
-            $thisAmount = $rental->obtainCharge();
-
             // add frequent renter points
             $frequentRenterPoints = $frequentRenterPoints + $rental->calculateFrequentRenterPoints();
 
             //show figures for this rental
-            $result .= "\t" . $rental->getMovie()->getTitle() . "\t" . $thisAmount . "\n";
+            $result .= "\t" . $rental->getMovie()->getTitle() . "\t" . $rental->obtainCharge() . "\n";
         }
+
         //add footer lines
         $result .= 'Amount owed is ' . $this->calculateTotalAmount($rentals) . "\n";
         $result .= 'You earned ' . $frequentRenterPoints . ' frequent renter points';
