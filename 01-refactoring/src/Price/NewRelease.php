@@ -3,12 +3,14 @@
 namespace Refactoring\Price;
 
 
+use Refactoring\Movie;
+
 class NewRelease implements Price
 {
 
 
     public function getPrice()
     {
-        return 0;
+        return Movie::NEW_RELEASE;
     }
 }

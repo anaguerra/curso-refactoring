@@ -3,12 +3,14 @@
 namespace Refactoring\Price;
 
 
+use Refactoring\Movie;
+
 class Children implements Price
 {
 
 
     public function getPrice()
     {
-        return 0;
+        return Movie::CHILDRENS;
     }
 }
