@@ -36,8 +36,7 @@ class Customer
             $totalAmount += $thisAmount;
 
             // add frequent renter points
-            $frequentRenterPoints = $frequentRenterPoints +
-                $rental->calculateFrequenRenterPoints($frequentRenterPoints);
+            $frequentRenterPoints = $frequentRenterPoints + $rental->calculateFrequentRenterPoints();
 
             //show figures for this rental
             $result .= "\t" . $rental->getMovie()->getTitle() . "\t" . $thisAmount . "\n";
