@@ -9,7 +9,7 @@ class NewRelease implements Price
 {
 
 
-    public function getPrice()
+    public function getPriceCode()
     {
         return Movie::NEW_RELEASE;
     }

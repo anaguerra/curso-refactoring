@@ -13,6 +13,6 @@ interface Price
 {
 
 
-    public function getPrice();
+    public function getPriceCode();
 
 }

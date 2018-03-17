@@ -9,7 +9,7 @@ class Regular implements Price
 {
 
 
-    public function getPrice()
+    public function getPriceCode()
     {
         return Movie::REGULAR;
     }
