@@ -5,7 +5,7 @@ namespace Refactoring\Price;
 
 use Refactoring\Movie;
 
-class Regular implements Price
+class Regular extends Price
 {
 
 
