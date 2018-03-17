@@ -32,6 +32,10 @@ class Movie
     }
 
 
+    /**
+     * @param $daysRented
+     * @return float|int
+     */
     public function obtainCharge($daysRented)
     {
         $thisAmount = 0;
@@ -58,4 +62,30 @@ class Movie
 
         return $thisAmount;
     }
+
+
+    /**
+     * @return int
+     */
+    public function calculateFrequentRenterPoints($daysRented)
+    {
+        return 1 + $this->addBonusPoints($daysRented);
+    }
+
+
+    /**
+     * @return int
+     */
+    private function addBonusPoints($daysRented)
+    {
+        $frequentRenterPoints = 0;
+
+        if (($this->getPriceCode() == Movie::NEW_RELEASE)
+            && $daysRented > 1) {
+
+            $frequentRenterPoints = $frequentRenterPoints + 1;
+        }
+        return $frequentRenterPoints;
+    }
+
 }
