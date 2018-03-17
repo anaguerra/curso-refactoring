@@ -1,11 +1,12 @@
 <?php
 
-require_once(dirname(__DIR__).'/Customer.php');
-require_once(dirname(__DIR__).'/Rental.php');
-require_once(dirname(__DIR__).'/Movie.php');
+namespace Refactoring;
 
 
-class CustomerTest extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+
+class CustomerTest extends TestCase
 {
     public $customer;
 
