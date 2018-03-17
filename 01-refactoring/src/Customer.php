@@ -36,8 +36,8 @@ class Customer
         }
 
         //add footer lines
-        $result .= 'Amount owed is ' . $this->calculateTotalAmount($rentals) . "\n";
-        $result .= 'You earned ' . $this->calculateTotalFrequentPoints($rentals) . ' frequent renter points';
+        $result .= 'Amount owed is ' . $this->obtainTotalAmount($rentals) . "\n";
+        $result .= 'You earned ' . $this->obtainTotalFrequentPoints($rentals) . ' frequent renter points';
 
         return $result;
     }
@@ -47,7 +47,7 @@ class Customer
      * @param $rentals
      * @return int
      */
-    private function calculateTotalAmount($rentals)
+    private function obtainTotalAmount($rentals)
     {
         $totalAmount = 0;
 
@@ -62,13 +62,13 @@ class Customer
     /**
      * @param $rentals
      */
-    private function calculateTotalFrequentPoints($rentals)
+    private function obtainTotalFrequentPoints($rentals)
     {
         $frequentRenterPoints = 0;
 
         foreach ($rentals as $rental) {
             // add frequent renter points
-            $frequentRenterPoints = $frequentRenterPoints + $rental->calculateFrequentRenterPoints();
+            $frequentRenterPoints = $frequentRenterPoints + $rental->obtainFrequentRenterPoints();
         }
         return $frequentRenterPoints;
     }

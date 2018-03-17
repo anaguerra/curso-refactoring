@@ -67,7 +67,7 @@ class Movie
     /**
      * @return int
      */
-    public function calculateFrequentRenterPoints($daysRented)
+    public function obtainFrequentRenterPoints($daysRented)
     {
         return 1 + $this->addBonusPoints($daysRented);
     }
