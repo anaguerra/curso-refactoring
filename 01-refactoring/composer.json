@@ -1,8 +1,14 @@
 {
     "name": "jeslopcru/refactoring-essential",
     "require-dev": {
-        "phpunit/phpunit": "^5.5"
+        "phpunit/phpunit": "^6.2"
     },
     "minimum-stability": "stable",
-    "require": {}
+    "require": {},
+
+    "autoload": {
+        "psr-4": {
+            "Refactoring\\": "."
+        }
+    }
 }

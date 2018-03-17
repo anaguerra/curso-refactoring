@@ -5,3 +5,4 @@
 04-naming/vendor
 05_old-school/vendor
 05_old-school/phpunit.phar
+/01-refactoring/composer.lock
