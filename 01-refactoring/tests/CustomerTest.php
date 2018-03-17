@@ -10,7 +10,8 @@ class CustomerTest extends TestCase
 {
     public $customer;
 
-    public function setUp(){
+    public function setUp()
+    {
         $this->customer = new Customer("Joe");
     }
 
