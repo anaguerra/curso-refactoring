@@ -14,6 +14,7 @@ class TripServiceTest extends TestCase
      */
     private $tripService;
 
+
     /**
      *
      */
@@ -23,24 +24,32 @@ class TripServiceTest extends TestCase
     }
 
 
-    /** @test */
+    /** @test
+     * @expectedException TripServiceKata\Exception\UserNotLoggedInException
+     */
     public function givenNotLoggedUserRetrieveException()
     {
-        try {
-            $this->tripService->getTripsByUser(new User(null));
-        } catch (UserNotLoggedInException $e) {
-            $this->assertTrue(true);
+        //given
+        $this->tripService->loggedUserWrapper = null;
+        $this->getExpectedException('TripServiceKata\Exception\UserNotLoggedInException');
 
-        }
+        //when
+        $this->tripService->getTripsByUser(new User(null));
+
+        //then
+        $this->assertTrue(true);
+
     }
 }
 
 
 class TripServiceWrapper extends TripService
 {
+    public $loggedUserWrapper;
+
 
     protected function obtainLoggedUser()
     {
-        return null;
+        return $this->loggedUserWrapper;
     }
 }

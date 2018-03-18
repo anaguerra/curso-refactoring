@@ -8,7 +8,8 @@ use TripServiceKata\Exception\UserNotLoggedInException;
 
 class TripService
 {
-    public function getTripsByUser(User $user) {
+    public function getTripsByUser(User $user)
+    {
         $tripList = array();
         $loggedUser = $this->obtainLoggedUser();
         $isFriend = false;
