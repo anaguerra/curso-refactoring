@@ -3,7 +3,6 @@
 namespace Refactoring\Price;
 
 
-use Refactoring\Movie;
 
 abstract class Price
 {
@@ -13,7 +12,6 @@ abstract class Price
 
     /**
      * @param $daysRented
-     * @return float|int
      */
     public abstract function obtainCharge($daysRented);
 
@@ -24,23 +22,7 @@ abstract class Price
      */
     public function obtainFrequentRenterPoints($daysRented)
     {
-        return 1 + $this->addBonusPoints($daysRented);
+        return 1;
     }
 
-
-    /**
-     * @param $daysRented
-     * @return int
-     */
-    private function addBonusPoints($daysRented)
-    {
-        $frequentRenterPoints = 0;
-
-        if (($this->getPriceCode() == Movie::NEW_RELEASE)
-            && $daysRented > 1) {
-
-            $frequentRenterPoints = $frequentRenterPoints + 1;
-        }
-        return $frequentRenterPoints;
-    }
 }

@@ -18,4 +18,16 @@ class NewRelease extends Price
     {
         return $daysRented * 3;
     }
+
+    public function obtainFrequentRenterPoints($daysRented)
+    {
+        $frequentRenterPoints = 1;
+
+        if (($this->getPriceCode() == Movie::NEW_RELEASE)
+            && $daysRented > 1) {
+
+            $frequentRenterPoints = $frequentRenterPoints + 1;
+        }
+        return $frequentRenterPoints;
+    }
 }
