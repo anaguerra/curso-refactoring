@@ -15,13 +15,6 @@ class TripServiceTest extends TestCase
     private $tripService;
 
 
-    /**
-     *
-     */
-    protected function setUp()
-    {
-        $this->tripService = new TripServiceWrapper();
-    }
 
 
     /** @test
@@ -29,14 +22,12 @@ class TripServiceTest extends TestCase
      */
     public function givenNotLoggedUserRetrieveException()
     {
+        $this->tripService = new TripServiceWrapper();
         //given
         $this->tripService->loggedUserWrapper = null;
-
         //when
         $this->tripService->getTripsByUser(new User(null));
-
         $this->getExpectedException('TripServiceKata\Exception\UserNotLoggedInException');
-
         //then
         $this->assertTrue(true);
     }
@@ -47,12 +38,11 @@ class TripServiceTest extends TestCase
      */
     public function testUserAreNotFriendsThenObtainEmptyList()
     {
+        $this->tripService = new TripServiceWrapper();
         // given
         $this->tripService->loggedUserWrapper = new User('Juan sinamigos');
-
         // when
         $tripList = $this->tripService->getTripsByUser(new User('Pepito'));
-
         //then
         $this->assertEquals([], $tripList);
     }
@@ -64,6 +54,7 @@ class TripServiceTest extends TestCase
      */
     public function testUserLoggedIsFriendOfTripUserThenObtainATrip()
     {
+        $this->tripService = new TripServiceWrapper();
         // given
         $juan = new User('Juan');
         $carlos = new User('Carlos');
@@ -73,7 +64,6 @@ class TripServiceTest extends TestCase
 
         // when
         $tripList = $this->tripService->getTripsByUser($juan);
-
         //then
         $this->assertNotEmpty($tripList);
     }
