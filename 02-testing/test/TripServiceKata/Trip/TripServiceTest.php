@@ -58,6 +58,27 @@ class TripServiceTest extends TestCase
     }
 
 
+    /**
+     * @test
+     * Si el usuario es amigo del usuario logado devuelve lista de viajes
+     */
+    public function testUserLoggedIsFriendOfTripUserThenObtainATrip()
+    {
+        // given
+        $juan = new User('Juan');
+        $carlos = new User('Carlos');
+        $juan->addFriend($carlos);
+
+        $this->tripService->loggedUserWrapper = $carlos;
+
+        // when
+        $tripList = $this->tripService->getTripsByUser($juan);
+
+        //then
+        $this->assertNotEmpty($tripList);
+    }
+
+
 }
 
 
@@ -73,4 +94,11 @@ class TripServiceWrapper extends TripService
     {
         return $this->loggedUserWrapper;
     }
+
+    protected function obtainTripsByUser()
+    {
+        return [1, 2, 3];
+    }
+
+
 }
