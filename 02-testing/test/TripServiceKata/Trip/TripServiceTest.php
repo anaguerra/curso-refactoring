@@ -22,9 +22,8 @@ class TripServiceTest extends TestCase
      */
     public function givenNotLoggedUserRetrieveException()
     {
-        $this->tripService = new TripServiceWrapper();
         //given
-        $this->tripService->loggedUserWrapper = null;
+        $this->tripService = new TripServiceWrapper(null);
         //when
         $this->tripService->getTripsByUser(new User(null));
         $this->getExpectedException('TripServiceKata\Exception\UserNotLoggedInException');
@@ -38,9 +37,8 @@ class TripServiceTest extends TestCase
      */
     public function testUserAreNotFriendsThenObtainEmptyList()
     {
-        $this->tripService = new TripServiceWrapper();
         // given
-        $this->tripService->loggedUserWrapper = new User('Juan sinamigos');
+        $this->tripService = new TripServiceWrapper(new User('Juan sinamigos'));
         // when
         $tripList = $this->tripService->getTripsByUser(new User('Pepito'));
         //then
@@ -54,13 +52,11 @@ class TripServiceTest extends TestCase
      */
     public function testUserLoggedIsFriendOfTripUserThenObtainATrip()
     {
-        $this->tripService = new TripServiceWrapper();
         // given
-        $juan = new User('Juan');
         $carlos = new User('Carlos');
+        $this->tripService = new TripServiceWrapper($carlos);
+        $juan = new User('Juan');
         $juan->addFriend($carlos);
-
-        $this->tripService->loggedUserWrapper = $carlos;
 
         // when
         $tripList = $this->tripService->getTripsByUser($juan);
@@ -85,7 +81,7 @@ class TripServiceWrapper extends TripService
         return $this->loggedUserWrapper;
     }
 
-    protected function obtainTripsByUser()
+    protected function obtainTripsByUser($user)
     {
         return [1, 2, 3];
     }
