@@ -15,7 +15,7 @@ class TripService
 
         $this->checkIfUserIsLogged($loggedUser);
 
-        $isFriend = $this->areFriends($user, $loggedUser);
+        $isFriend = $user->areFriends($loggedUser);
         if ($isFriend) {
             $tripList = $this->obtainTripsByUser($user);
         }
