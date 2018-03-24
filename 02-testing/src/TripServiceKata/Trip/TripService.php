@@ -52,24 +52,5 @@ class TripService
     {
         return TripDAO::findTripsByUser($user);
     }
-
-
-    /**
-     * @param User $user
-     * @param $loggedUser
-     * @return bool
-     */
-    private function areFriends(User $user, $loggedUser): bool
-    {
-        $isFriend = false;
-
-        foreach ($user->getFriends() as $friend) {
-            if ($friend == $loggedUser) {
-                $isFriend = true;
-                break;
-            }
-        }
-        return $isFriend;
-    }
 }
 
