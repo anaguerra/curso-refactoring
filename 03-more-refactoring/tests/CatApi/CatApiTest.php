@@ -2,9 +2,10 @@
 
 namespace CatApi\Tests;
 
+use PHPUnit\Framework\TestCase;
 use CatApi\CatApi;
 
-class CatApiTest extends \PHPUnit_Framework_TestCase
+class CatApiTest extends TestCase
 {
     protected function tearDown()
     {
